@@ -53,7 +53,6 @@ def plotEvent(event):
         plt.text(d + 0.48, (startPos + endPos) * 0.503, event.name, ha='center', va='center', fontsize=10)
 
 if __name__ == '__main__':
-    # set axis
     fig = plt.figure(figsize=(18, 9))
     plt.title(TITLE, y=1, fontsize=14)
     ax=fig.add_subplot(1, 1, 1)
@@ -64,10 +63,13 @@ if __name__ == '__main__':
     ax.set_yticks(HOURS_RANGE)
     ax.set_yticklabels(["{0}:00".format(h) for h in HOURS_RANGE])
     ax.grid(axis='y', linestyle='--', linewidth=0.5)
-
     with open(sys.argv[1]) as fp:
         lines = fp.readlines()
-    events = parseEvents(lines)
-    for e in events:
-        plotEvent(e)
+    try:
+        events = parseEvents(lines)
+        for e in events:
+            plotEvent(e)
+    except UserWarning as e:
+        print("ERROR:", str(e), file=sys.stderr)
+        sys.exit(1)
     plt.savefig('{0}.png'.format(TITLE), dpi=DPI)
