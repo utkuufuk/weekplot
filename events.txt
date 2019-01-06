@@ -1,0 +1,49 @@
+Breakfast
+Mon, Tue, Wed, Thu, Fri
+07:45 - 08:15
+lightgreen
+
+Breakfast
+Sat, Sun
+10:00 - 10:30
+lightgreen
+
+Work
+Mon, Tue, Wed, Thu, Fri
+08:45 - 12:30
+cornflowerblue
+
+Walking
+Mon, Tue, Wed, Thu, Fri
+12:30 - 13:00
+darkorange
+
+Lunch
+Mon, Tue, Wed, Thu, Fri
+13:00 - 13:30
+lightgreen
+
+Work
+Mon, Tue, Wed, Thu, Fri
+13:30 - 17:15
+cornflowerblue
+
+Body Weight Training
+Mon, Wed, Fri
+17:30 - 18:30
+darkorange
+
+Swimming
+Sun
+08:30 - 09:30
+darkorange
+
+Master Thesis
+Mon, Tue, Wed, Thu, Fri, Sat, Sun
+19:30 - 21:30
+mediumpurple
+
+Dinner
+Mon, Tue, Wed, Thu, Fri
+18:45 - 19:15
+lightgreen
