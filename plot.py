@@ -19,8 +19,7 @@ def getDay(prefix):
     raise UserWarning("Invalid day: {0}".format(prefix))
 
 def parseEvents(lines):
-    events = []
-    events.append(Event('', '', '', '', ''))
+    events = [Event('', '', '', '', '')]
     index = 0
     for line in lines:
         line = line.rstrip()
