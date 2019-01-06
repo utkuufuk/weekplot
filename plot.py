@@ -1,6 +1,6 @@
 import sys
 import matplotlib.pyplot as plt
-from recordtype import recordtype
+from namedlist import namedlist
 
 HOURS_START = 7
 HOURS_END = 23
@@ -10,7 +10,7 @@ DPI = 100
 TITLE = 'Schedule'
 DAYS = ['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
-Event = recordtype('Event', 'name, days, start, end, color')
+Event = namedlist('Event', 'name, days, start, end, color')
 
 def getDay(prefix):
     for d in DAYS:
