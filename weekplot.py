@@ -1,12 +1,12 @@
 import sys
+from math import ceil
 import matplotlib.pyplot as plt
 from namedlist import namedlist
 
-HOURS_START = 7
-HOURS_END = 23
-HOURS_TICK_INTERVAL = 2
-HOURS_RANGE = range(HOURS_START, HOURS_END + HOURS_TICK_INTERVAL, HOURS_TICK_INTERVAL)
-DPI = 100
+HOURS_START = 6.5
+HOURS_END = 24
+HOURS_RANGE = range(ceil(HOURS_START), ceil(HOURS_END))
+DPI = 200
 TITLE = 'Schedule'
 DAYS = ['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
@@ -49,8 +49,8 @@ def plotEvent(event):
         end = event.end.split(':')
         endPos = float(end[0]) + float(end[1]) / 60
         plt.fill_between([d, d + 0.96], [startPos, startPos], [endPos, endPos], color=event.color)
-        plt.text(d + 0.02, startPos + 0.02, '{0}:{1:0>2}'.format(start[0], start[1]), va='top', fontsize=9)
-        plt.text(d + 0.48, (startPos + endPos) * 0.503, event.name, ha='center', va='center', fontsize=10)
+        plt.text(d + 0.02, startPos + 0.02, '{0}:{1:0>2}'.format(start[0], start[1]), va='top', fontsize=8)
+        plt.text(d + 0.48, (startPos + endPos) * 0.502, event.name, ha='center', va='center', fontsize=10)
 
 if __name__ == '__main__':
     fig = plt.figure(figsize=(18, 9))
@@ -72,4 +72,4 @@ if __name__ == '__main__':
     except UserWarning as e:
         print("ERROR:", str(e), file=sys.stderr)
         sys.exit(1)
-    plt.savefig('{0}.png'.format(TITLE), dpi=DPI)
+    plt.savefig('{0}.png'.format(sys.argv[1].split('.')[0]), dpi=DPI, bbox_inches='tight')
