@@ -10,7 +10,7 @@ pip3 install -r requirements.txt
 
 ## Usage
 ``` sh
-python3 plot.py events.txt
+python3 weekplot.py events.txt
 ```
 
 Here's an [example input file.](events.txt)
