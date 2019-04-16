@@ -41,7 +41,7 @@ def parseEvents(lines):
             index = 0
         else:
             raise UserWarning("Corrupted input file.")
-    return events, earliest, latest
+    return events, earliest, latest + 1
 
 def plotEvent(e):
     for day in e.days:
