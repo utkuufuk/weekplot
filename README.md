@@ -1,5 +1,5 @@
 # Weekplot
-Reads & plots your weekly schedule from a text file.
+Reads & plots your weekly schedule from a YAML or a simple text file.
 
 ![Schedule](Schedule.png)
 
@@ -10,10 +10,16 @@ pip3 install -r requirements.txt
 
 ## Usage
 ``` sh
+# .txt input
 python3 weekplot.py events.txt
+
+# .yml input
+python3 weekplot.py events.yml
 ```
 
-Here's an [example input file.](events.txt)
+#### Example input files
+ - [text](events.txt)
+ - [YAML](events.yml)
 
 ## Colors
 You can use the following colors in your input file:

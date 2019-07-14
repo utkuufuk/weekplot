@@ -1,0 +1,104 @@
+- name: Breakfast
+  color: lightgreen
+  occurances:
+    - days: 
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      start: 7:45
+      end: 8:15
+    - days: 
+      - Sat
+      - Sun
+      start: 10:00
+      end: 10:30
+
+- name: Work
+  color: cornflowerblue
+  occurances:
+    - days:
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      start: 8:45
+      end: 12:30
+    - days:
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      start: 13:30
+      end: 17:15
+
+- name: Walking
+  color: darkorange
+  occurances: 
+    - days: 
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      start: 12:30
+      end: 13:00
+
+- name: Lunch
+  color: lightgreen 
+  occurances: 
+    - days: 
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      start: 13:00
+      end: 13:30
+
+- name: Swimming
+  color: darkorange
+  occurances: 
+    - days: 
+      - Sun
+      start: 8:30
+      end: 9:30
+
+- name: Body Weight Training
+  color: darkorange
+  occurances: 
+    - days: 
+      - Mon
+      - Wed
+      - Fri
+      start: 17:30
+      end: 18:30
+
+- name: Master Thesis
+  color: mediumpurple
+  occurances: 
+    - days: 
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
+      - Sun
+      start: 19:30
+      end: 21:30
+
+- name: Dinner
+  color: lightgreen
+  occurances: 
+    - days: 
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      start: 18:45
+      end: 19:15

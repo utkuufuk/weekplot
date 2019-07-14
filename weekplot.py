@@ -1,4 +1,5 @@
 import sys
+import yaml
 from math import ceil
 import matplotlib.pyplot as plt
 from namedlist import namedlist
@@ -12,7 +13,30 @@ def getDay(prefix):
             return d
     raise UserWarning("Invalid day: {0}".format(prefix))
 
-def parseEvents(lines):
+def parseYml(filename):
+    with open(filename, 'r') as stream:
+        try:
+            items = yaml.safe_load(stream)
+        except yaml.YAMLError as err:
+            raise UserWarning("Invalid YML file: {0}".format(err))
+    events = []
+    latest = 0
+    earliest = 24
+    for event in items:
+        for ocr in event["occurances"]:
+            sh = ocr["start"] // 60
+            sm = ocr["start"] % 60
+            eh = ocr["end"] // 60
+            em = ocr["end"] % 60
+            days = [getDay(d) for d in ocr["days"]]
+            events.append(Event(event["name"], days, sh, sm, eh, em, event["color"]))
+            earliest = sh if sh < earliest else earliest
+            latest = eh + 1 if eh > latest else latest
+    return events, earliest, latest + 1
+
+def parseTxt(lines):
+    with open(sys.argv[1]) as fp:
+        lines = fp.readlines()
     index = 0
     latest = 0
     earliest = 24
@@ -40,7 +64,7 @@ def parseEvents(lines):
             events.append(Event('', '', '', '', '', '', ''))
             index = 0
         else:
-            raise UserWarning("Corrupted input file.")
+            raise UserWarning("Invalid text input format.")
     return events, earliest, latest + 1
 
 def plotEvent(e):
@@ -53,11 +77,10 @@ def plotEvent(e):
         plt.text(d + 0.48, (start + end) * 0.502, e.name, ha='center', va='center', fontsize=10)
 
 if __name__ == '__main__':
+    ext = sys.argv[1].split('.')[-1]
     fig = plt.figure(figsize=(18, 9))
-    with open(sys.argv[1]) as fp:
-        lines = fp.readlines()
     try:
-        events, earliest, latest = parseEvents(lines)
+        events, earliest, latest = parseTxt(sys.argv[1]) if ext == 'txt' else parseYml(sys.argv[1])
         for e in events:
             plotEvent(e)
     except UserWarning as e:
@@ -73,4 +96,3 @@ if __name__ == '__main__':
     ax.set_yticklabels(["{0}:00".format(h) for h in range(ceil(earliest), ceil(latest))])
     ax.grid(axis='y', linestyle='--', linewidth=0.5)
     plt.savefig('{0}.png'.format(sys.argv[1].split('.')[0]), dpi=200, bbox_inches='tight')
-
