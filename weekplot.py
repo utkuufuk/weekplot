@@ -1,3 +1,4 @@
+import os
 import sys
 import yaml
 from math import ceil
@@ -95,4 +96,4 @@ if __name__ == '__main__':
     ax.set_yticks(range(ceil(earliest), ceil(latest)))
     ax.set_yticklabels(["{0}:00".format(h) for h in range(ceil(earliest), ceil(latest))])
     ax.grid(axis='y', linestyle='--', linewidth=0.5)
-    plt.savefig('{0}.png'.format(sys.argv[1].split('.')[0]), dpi=200, bbox_inches='tight')
+    plt.savefig('{0}.png'.format(os.path.splitext(sys.argv[1])[0]), dpi=200, bbox_inches='tight')
